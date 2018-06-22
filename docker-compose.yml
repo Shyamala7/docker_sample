@@ -1,0 +1,14 @@
+version: "2"
+services:
+  dev:
+    ports:
+      - "8080:8000"
+    depends_on:
+      - dbmongo
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    image: 522149414486.dkr.ecr.ap-south-1.amazonaws.com/f2f-dev
+  dbmongo:
+    image: mongo
+    ports:
+      - "27019:27017"
+
